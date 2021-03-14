@@ -5,7 +5,7 @@ import re
 import requests
 
 from random import randrange
-from termcolor import colored
+from colorama import init, Fore
 
 def banner():
     print(Fore.LIGHTGREEN_EX + """
